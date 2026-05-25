@@ -7,7 +7,6 @@ export default function TaskCard({ task, onStatusChange, onDelete, onEdit }) {
         <h3>{task.titulo}</h3>
         <p className="task-desc">{task.descripcion || "Sin descripción"}</p>
         <small className="task-date">Vence: {task.fechaVencimiento || "Sin fecha"}</small>
-""        <span className={`badge ${task.estado.toLowerCase()}`}>{task.estado}</span>
         <span className={`badge ${task.estado.toLowerCase().replace(/\s+/g, '-')}`}>{task.estado}</span>
       </div>
       <div className="task-actions">

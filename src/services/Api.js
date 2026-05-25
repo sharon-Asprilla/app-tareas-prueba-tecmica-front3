@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_URL = "https://6a1470676c7db8aac0548757.mockapi.io/Tarea"; // - endpoint en MockAPI
-
+const API_URL = "https://6a1470676c7db8aac0548757.mockapi.io/Tarea"; // tu endpoint en MockAPI
+const API_URL_USUARIOS = "https://6a1470676c7db8aac0548757.mockapi.io/Usuarios"; // endpoint para registro de sesion
 
 export const getTasks = () => axios.get(API_URL);
 export const createTask = (task) => axios.post(API_URL, task);
