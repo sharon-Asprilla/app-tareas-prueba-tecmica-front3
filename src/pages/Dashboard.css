@@ -1,6 +1,6 @@
 .dashboard-container {
   min-height: 100vh;
-  background-color: #f8fafc;
+  background-color: #f5f3ff;
   padding: 2rem;
 }
 
@@ -55,7 +55,7 @@
   transition: all 0.2s;
 }
 
-.filter-btn.active { background: white; color: #3b82f6; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.filter-btn.active { background: white; color: #c084fc; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 
 .task-form { flex: 1; display: flex; gap: 0.5rem; min-width: 300px; }
 .task-form input {
@@ -65,13 +65,28 @@
   border-radius: 10px;
   outline: none;
 }
+
+.task-form input:focus {
+  border-color: #c084fc;
+}
+
 .task-form button {
-  background: #3b82f6;
+  background: #c084fc;
   color: white;
   border: none;
-  padding: 0 1.5rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 10px;
   font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.task-form button:hover {
+  background: #a855f7;
+}
+
+.task-form button:active {
+  transform: scale(0.98);
 }
 
 .tasks-grid {
@@ -84,15 +99,72 @@
   background: white;
   padding: 1.5rem;
   border-radius: 12px;
-  border-left: 4px solid #3b82f6;
+  border-left: 4px solid #c084fc;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: transform 0.2s;
 }
 
-.task-card.completed { border-left-color: #10b981; opacity: 0.8; }
+/* Estilos internos de la tarjeta de tarea */
+.task-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.task-desc {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.task-date {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.status-select {
+  padding: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.8rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-action {
+  border: none;
+  background: #f1f5f9;
+  padding: 0.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-action:hover { background: #e2e8f0; }
+.btn-action.delete:hover { background: #fee2e2; }
+
+.task-card.completed { border-left-color: #f472b6; opacity: 0.8; }
 .task-card:hover { transform: translateY(-2px); }
+
+.empty-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #94a3b8;
+  background: white;
+  border-radius: 12px;
+  border: 2px dashed #e2e8f0;
+}
 
 .badge {
   display: inline-block;
@@ -102,9 +174,9 @@
   font-weight: 700;
   text-transform: uppercase;
 }
-.badge.pendiente { background: #fef3c7; color: #b45309; }
-.badge.en-progreso { background: #dbeafe; color: #1e40af; }
-.badge.completada { background: #d1fae5; color: #047857; }
+.badge.pendiente { background: #fce7f3; color: #db2777; }
+.badge.en-progreso { background: #f3e8ff; color: #7e22ce; }
+.badge.completada { background: #fdf2f8; color: #be185d; }
 
 .spinner-container { text-align: center; padding: 3rem; color: #64748b; }
 
@@ -112,7 +184,7 @@
   width: 40px;
   height: 40px;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #3b82f6;
+  border-top: 4px solid #c084fc;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 2rem auto;
