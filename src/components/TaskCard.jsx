@@ -1,13 +1,15 @@
 export default function TaskCard({ task, onStatusChange, onDelete, onEdit }) {
-  const isCompleted = task.estado === "Completada";
+  // Verificamos que el estado exista para evitar errores al renderizar
+  const estadoActual = task.estado || "Pendiente";
+  const isCompleted = estadoActual === "Completada";
 
   return (
     <div className={`task-card ${isCompleted ? 'completed' : ''}`}>
       <div className="task-info">
-        <h3>{task.titulo}</h3>
+        <h3>{task.titulo || "Sin título"}</h3>
         <p className="task-desc">{task.descripcion || "Sin descripción"}</p>
         <small className="task-date">Vence: {task.fechaVencimiento || "Sin fecha"}</small>
-        <span className={`badge ${task.estado.toLowerCase().replace(/\s+/g, '-')}`}>{task.estado}</span>
+        <span className={`badge ${estadoActual.toLowerCase().replace(/\s+/g, '-')}`}>{estadoActual}</span>
       </div>
       <div className="task-actions">
         <select 

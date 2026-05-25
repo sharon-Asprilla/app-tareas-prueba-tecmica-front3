@@ -32,12 +32,14 @@ export default function Dashboard() {
     try {
       const respuestaAPI = await getTasks();
       
-      console.log("--- LISTADO DE TAREAS DESDE LA API ---");
-      console.table(respuestaAPI.data); // Usamos table para que se vea más ordenado en consola
+      if (respuestaAPI.data) {
+        console.log("--- LISTADO DE TAREAS DESDE LA API ---");
+        console.table(respuestaAPI.data);
+        setTasks(respuestaAPI.data);
+      }
       
-      setTasks(respuestaAPI.data); // Guardamos la lista en nuestra variable de estado
     } catch (error) {
-      console.error("Fallo al obtener tareas:", error);
+      console.error("Error al conectar con MockAPI (Tareas):", error);
       Swal.fire("Error", "No pudimos conectar con el servidor de tareas", "error");
     } finally {
       setLoading(false); // Quitamos el cargando
@@ -152,15 +154,19 @@ export default function Dashboard() {
           <LoadingSpinner />
         ) : (
           <div className="tasks-grid">
-            {filteredTasks.map((task) => (
-              <TaskCard 
-                key={task.id} 
-                task={task} 
-                onStatusChange={changeStatus} 
-                onDelete={removeTask} 
-                onEdit={handleEditTask}
-              />
-            ))}
+            {filteredTasks.length > 0 ? (
+              filteredTasks.map((task) => (
+                <TaskCard 
+                  key={task.id} 
+                  task={task} 
+                  onStatusChange={changeStatus} 
+                  onDelete={removeTask} 
+                  onEdit={handleEditTask}
+                />
+              ))
+            ) : (
+              <p className="empty-message">No se encontraron tareas con este filtro.</p>
+            )}
           </div>
         )}
       </main>
