@@ -103,6 +103,7 @@
   text-transform: uppercase;
 }
 .badge.pendiente { background: #fef3c7; color: #b45309; }
+.badge.en-progreso { background: #dbeafe; color: #1e40af; }
 .badge.completada { background: #d1fae5; color: #047857; }
 
 .spinner-container { text-align: center; padding: 3rem; color: #64748b; }
@@ -117,7 +118,7 @@
   margin: 2rem auto;
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-m 
+
 /* RESPONSIVIDAD: Ajustes para el tablero */
 @media (max-width: 600px) {
   .dashboard-container {
