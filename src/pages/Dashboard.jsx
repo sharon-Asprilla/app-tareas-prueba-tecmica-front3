@@ -21,14 +21,13 @@ export default function Dashboard() {
       console.log("No hay sesión detectada, redirigiendo al login...");
       navigate("/login");
     } else {
-      setUser(JSON.parse(sessionData)); // Cargamos los datos del usuario en el estado
-      loadTasks(); // Llamamos a la función para traer las tareas
+      setUser(JSON.parse(sessionData));
+      loadTasks();
     }
   }, [navigate]);
 
-  // Esta función trae las tareas de internet
   const loadTasks = async () => {
-    setLoading(true); // Ponemos el cargando en verdadero
+    setLoading(true);
     try {
       const respuestaAPI = await getTasks();
       
@@ -42,7 +41,7 @@ export default function Dashboard() {
       console.error("Error al conectar con MockAPI (Tareas):", error);
       Swal.fire("Error", "No pudimos conectar con el servidor de tareas", "error");
     } finally {
-      setLoading(false); // Quitamos el cargando
+      setLoading(false);
     }
   };
 
@@ -52,7 +51,7 @@ export default function Dashboard() {
       console.log("Tarea creada con éxito en la API:", resultado.data);
       
       Swal.fire("¡Éxito!", "Tarea agregada correctamente", "success");
-      loadTasks(); // Refrescamos la lista para ver la nueva tarea
+      loadTasks();
     } catch (error) {
       console.error("Error al intentar guardar la tarea:", error);
       Swal.fire("Error", "No se pudo agregar la tarea. Inténtalo de nuevo.", "error");
@@ -63,7 +62,7 @@ export default function Dashboard() {
     try {
       const res = await updateTask(id, { estado: nuevoEstado });
       console.log(`Tarea ${id} actualizada a estado: ${nuevoEstado}`, res.data);
-      loadTasks(); // Volvemos a cargar los datos para ver el cambio
+      loadTasks();
     } catch (error) {
       console.error("Error al actualizar estado:", error);
       Swal.fire("Error", "No se pudo cambiar el estado", "error");
@@ -100,7 +99,6 @@ export default function Dashboard() {
   };
 
   const removeTask = async (id) => {
-    // Primero preguntamos al usuario si está seguro
     const confirmacion = await Swal.fire({
       title: "¿Eliminar tarea?",
       text: "Esta acción no se puede deshacer",
@@ -114,7 +112,7 @@ export default function Dashboard() {
         await deleteTask(id);
         console.log(`Tarea con ID ${id} eliminada correctamente.`);
         Swal.fire("¡Eliminada!", "La tarea ya no existe.", "success");
-        loadTasks(); // Actualizamos la lista
+        loadTasks();
       } catch (error) {
         console.error("Error al eliminar:", error);
         Swal.fire("Error", "No se pudo borrar la tarea", "error");
@@ -127,7 +125,6 @@ export default function Dashboard() {
     navigate("/login");
   };
 
-  // Lógica de filtrado en el cliente
   const filteredTasks = tasks.filter((t) => 
     filter === "Todas" ? true : t.estado === filter
   );

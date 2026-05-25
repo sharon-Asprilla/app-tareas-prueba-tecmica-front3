@@ -175,7 +175,6 @@
   background-color: #fff;
 }
 
-/* RESPONSIVIDAD: Ajustes para tablets y celulares */
 @media (max-width: 768px) {
   .login-wrapper {
     flex-direction: column;

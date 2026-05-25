@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { saveUserToApi } from "../services/api"; // Importamos la función nueva
+import { saveUserToApi } from "../services/api";  
 import "./Login.css";
 
 export default function Login() {
-  const [username, setUsername] = useState(""); // Variable para el nombre
-  const [department, setDepartment] = useState("Desarrollo"); // Variable para el depto
-  const navigate = useNavigate(); // Para movernos de página
+  const [username, setUsername] = useState("");
+  const [department, setDepartment] = useState("Desarrollo");
+  const navigate = useNavigate();
 
-  // Esta función se ejecuta al dar clic en el botón
+  
   const handleLogin = async (event) => {
-    event.preventDefault(); // Evita que la página se recargue
+    event.preventDefault();
     
     if (username === "") {
       alert("¡Oye! Tienes que escribir un nombre.");
@@ -18,14 +18,14 @@ export default function Login() {
     }
 
     try {
-      // PASO 1: Enviar los datos del usuario a la API de MockAPI
+       
       const respuestaServidor = await saveUserToApi({ username: username, department: department });
       console.log("Respuesta de la API al registrar usuario:", respuestaServidor.data);
 
-      // PASO 2: Si la API respondió bien, guardamos en LocalStorage para mantener la sesión
+      
       localStorage.setItem("session", JSON.stringify({ username, department }));
       
-      // PASO 3: Navegamos a la ruta del tablero
+     
       navigate("/tablero");
     } catch (error) {
       console.error("Error detallado al conectar con MockAPI:", error);
@@ -35,7 +35,6 @@ export default function Login() {
 
   return (
     <div className="login-wrapper">
-      {/* Columna Izquierda: Formulario */}
       <div className="login-left">
         <div className="logo-container">
           <span className="logo-icon">📦</span>
@@ -109,7 +108,6 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Columna Derecha: Fondo Artístico */}
       <div className="login-right">
         <div className="liquid-bg"></div>
       </div>

@@ -1,5 +1,4 @@
 export default function TaskCard({ task, onStatusChange, onDelete, onEdit }) {
-  // Verificamos que el estado exista para evitar errores al renderizar
   const estadoActual = task.estado || "Pendiente";
   const isCompleted = estadoActual === "Completada";
 

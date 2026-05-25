@@ -106,7 +106,6 @@
   transition: transform 0.2s;
 }
 
-/* Estilos internos de la tarjeta de tarea */
 .task-info {
   flex: 1;
   display: flex;
@@ -191,7 +190,6 @@
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* RESPONSIVIDAD: Ajustes para el tablero */
 @media (max-width: 600px) {
   .dashboard-container {
     padding: 1rem;
