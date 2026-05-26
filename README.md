@@ -1,5 +1,8 @@
 # Gestor de Tareas Diarias
 
+## url de la pagina renderizada en VERCEL 
+app-tareas-beta.vercel.app
+
 ## Descripción
 Gestor de Tareas es una aplicación web de una sola página  diseñada para optimizar la gestión de tareas dentro de un equipo de trabajo. La plataforma permite a los usuarios registrarse bajo un departamento específico, organizar sus pendientes y realizar un seguimiento detallado del progreso de cada tarea a través de diversos estados.
 
