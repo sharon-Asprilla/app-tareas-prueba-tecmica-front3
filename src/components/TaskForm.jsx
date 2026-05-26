@@ -9,7 +9,10 @@ export default function TaskForm({ onAdd }) {
     e.preventDefault();
     if (!title.trim()) return alert("El título es obligatorio");
     
-    onAdd({ titulo: title, descripcion: description, fechaVencimiento: dueDate, estado: "Pendiente" });
+    if (typeof onAdd === "function") {
+      onAdd({ titulo: title, descripcion: description, fechaVencimiento: dueDate, estado: "Pendiente" });
+    }
+    
     setTitle("");
     setDescription("");
     setDueDate("");

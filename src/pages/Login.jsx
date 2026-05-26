@@ -12,14 +12,14 @@ export default function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     
-    if (username === "") {
+    if (!username.trim()) {
       alert("¡Oye! Tienes que escribir un nombre.");
       return;
     }
 
     try {
        
-      const respuestaServidor = await saveUserToApi({ username: username, department: department });
+      const respuestaServidor = await saveUserToApi({ username, department });
       console.log("Respuesta de la API al registrar usuario:", respuestaServidor.data);
 
       
