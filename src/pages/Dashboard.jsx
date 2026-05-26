@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getTasks, createTask, updateTask, deleteTask } from "../services/api";
+import { getTasks, createTask, updateTask, deleteTask } from "../services/Api";
 import Swal from "sweetalert2";
 import TaskForm from "../components/TaskForm";
 import TaskCard from "../components/TaskCard";
