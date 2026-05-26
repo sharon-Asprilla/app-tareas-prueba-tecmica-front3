@@ -24,7 +24,7 @@ Gestor de Tareas es una aplicación web de una sola página  diseñada para opti
 ## Servicio de API Mockeada
 La aplicación consume los recursos desde el siguiente servicio externo:
 **Endpoint Base**:
-- https://6a1470676c7db8aac0548757.mockapi.io/Tareas
+- https://6a1470676c7db8aac0548757.mockapi.io/Tarea
 - https://6a1470676c7db8aac0548757.mockapi.io/Usuarios
 
 ## Instrucciones de Instalación y Ejecución Local
